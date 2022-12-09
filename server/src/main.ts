@@ -1,8 +1,7 @@
-import {NestFactory} from "@nestjs/core";
-import {AppModule} from "./app.module";
-import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger";
-import {JwtAuthGuard} from "./auth/jwt-auth.guard";
-import {ValidationPipe} from "./pipes/validation.pipe";
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ValidationPipe } from './pipes/validation.pipe';
 
 async function start() {
   const PORT = process.env.PORT || 666;
@@ -13,7 +12,7 @@ async function start() {
     .setDescription('notion/obsidian clone')
     .setVersion('1.0.0')
     .addTag('electron-app-etoyadadaya')
-    .build()
+    .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/api/docs', app, document);
 
