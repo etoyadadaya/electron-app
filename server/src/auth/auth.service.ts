@@ -1,59 +1,64 @@
+import {CreateUserDto} from "../users/dto/create-user.dto";
 import {
   HttpException,
   HttpStatus,
   Injectable,
   UnauthorizedException,
-} from '@nestjs/common';
-import { CreateUserDto } from '../users/dto/create-user.dto';
-import { UsersService } from '../users/users.service';
-import { JwtService } from '@nestjs/jwt';
-import * as bcrypt from 'bcryptjs';
-import { User } from '../users/users.model';
+} from "@nestjs/common";
+import {UsersService} from "../users/users.service";
+import {compare, hash} from "bcryptjs";
+import {TokensService} from "../tokens/token.service";
+import {RefreshDto} from "./dto/refresh.dto";
 
 @Injectable()
 export class AuthService {
   constructor(
     private userService: UsersService,
-    private jwtService: JwtService,
+    private tokenService: TokensService
   ) {}
 
   async login(userDto: CreateUserDto) {
     const user = await this.validateUser(userDto);
-    return this.generateToken(user);
+
+    return this.tokenService.generateKeys(user.id);
   }
 
   async registration(userDto: CreateUserDto) {
     const candidate = await this.userService.getUserByEmail(userDto.email);
     if (candidate) {
-      throw new HttpException(
-        'user with this email exist',
-        HttpStatus.BAD_REQUEST,
-      );
+      throw new HttpException("email is taken", HttpStatus.BAD_REQUEST);
     }
-    const hashPassword = await bcrypt.hash(userDto.password, 5);
+    const hashPassword = await hash(userDto.password, 10);
     const user = await this.userService.createUser({
       ...userDto,
       password: hashPassword,
     });
-    return this.generateToken(user);
+
+    return this.tokenService.generateKeys(user.id);
   }
 
-  private async generateToken(user: User) {
-    const payload = { id: user.id, email: user.email, roles: user.roles };
-    return {
-      token: this.jwtService.sign(payload),
-    };
+  async refresh(refreshDto: RefreshDto) {
+    const tokens = this.tokenService.validate(refreshDto);
+
+    if (!tokens) {
+      throw new UnauthorizedException({
+        message: "invalid tokens",
+      });
+    }
+
+    return tokens;
   }
 
   private async validateUser(userDto: CreateUserDto) {
     const user = await this.userService.getUserByEmail(userDto.email);
-    const passwordEquals = await bcrypt.compare(
-      userDto.password,
-      user.password,
-    );
+    const passwordEquals = await compare(userDto.password, user.password);
+
     if (user && passwordEquals) {
       return user;
     }
-    throw new UnauthorizedException({ message: 'Incorrect email or password' });
+
+    throw new UnauthorizedException({
+      message: "Invalid email and password",
+    });
   }
 }

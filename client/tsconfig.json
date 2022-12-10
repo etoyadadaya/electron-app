@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "target": "es2021",
+    "module": "commonjs",
+    "lib": ["dom", "es2021"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "sourceMap": false,
+    "baseUrl": "./src",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "outDir": ".gensetix/dll",
+    "skipLibCheck": true,
+    "noEmitOnError": true,
+    "removeComments": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["test", "release/build", "release/app/dist", ".gensetix/dll"]
+}

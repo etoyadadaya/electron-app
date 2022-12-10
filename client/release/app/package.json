@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "name": "gensetix_runtime",
+  "version": "v1.0.0",
+  "main": "./dist/main/main.js",
+  "scripts": {
+    "rebuild": "node -r ts-node/register ../../.gensetix/scripts/electron-rebuild.js",
+    "postinstall": "npm run rebuild && npm run link-modules",
+    "link-modules": "node -r ts-node/register ../../.gensetix/scripts/link-modules.ts"
+  },
+  "dependencies": {}
+}

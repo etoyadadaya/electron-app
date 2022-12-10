@@ -1,0 +1,28 @@
+### Logs ###
+logs/
+*.log
+npm-debug.log.*
+
+### Runtime data ###
+pids
+*.pid
+*.seed
+
+### Coverage ###
+coverage
+.eslintcache
+
+### Dependency directories ###
+node_modules/
+
+### OSX ###
+.DS_Store
+
+### Build output ###
+release/app/dist
+release/build
+.gensetix/dll/
+*.scss.d.ts
+
+### WebStorm ###
+.idea/
