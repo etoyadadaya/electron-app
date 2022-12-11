@@ -15,9 +15,10 @@ p {
 }
 
 .left {
+  user-select: none;
   width: 240px;
   height: 100vh;
-  background: #FFFDFA;
+  background: #fffdfa;
   position: relative;
 }
 

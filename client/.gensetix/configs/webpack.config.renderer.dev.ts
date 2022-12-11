@@ -4,8 +4,8 @@ import fs from "fs";
 import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import chalk from "chalk";
-import {merge} from "webpack-merge";
-import {execSync, spawn} from "child_process";
+import { merge } from "webpack-merge";
+import { execSync, spawn } from "child_process";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import baseConfig from "./webpack.config.base";
 import webpackPaths from "./webpack.paths";
@@ -66,18 +66,18 @@ const configuration: webpack.Configuration = {
             options: {
               modules: {
                 mode: "local",
-                localIdentName: "[local]-[hash:base64:6]"
-              }
+                localIdentName: "[local]-[hash:base64:6]",
+              },
             },
           },
           {
             loader: "sass-loader",
             options: {
               sassOptions: {
-                outputStyle: "compressed"
-              }
-            }
-          }
+                outputStyle: "compressed",
+              },
+            },
+          },
         ],
         include: /\.module\.scss$/,
       },
@@ -88,11 +88,11 @@ const configuration: webpack.Configuration = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
       },
       {
         test: /\.svg$/,
@@ -103,7 +103,7 @@ const configuration: webpack.Configuration = {
               prettier: false,
               svgo: false,
               svgoConfig: {
-                plugins: [{removeViewBox: false}],
+                plugins: [{ removeViewBox: false }],
               },
               titleProp: true,
               ref: true,
@@ -118,12 +118,12 @@ const configuration: webpack.Configuration = {
     ...(skipDLLs
       ? []
       : [
-        new webpack.DllReferencePlugin({
-          context: webpackPaths.dllPath,
-          manifest: require(manifest),
-          sourceType: "var",
-        }),
-      ]),
+          new webpack.DllReferencePlugin({
+            context: webpackPaths.dllPath,
+            manifest: require(manifest),
+            sourceType: "var",
+          }),
+        ]),
 
     new webpack.NoEmitOnErrorsPlugin(),
 
@@ -161,7 +161,7 @@ const configuration: webpack.Configuration = {
     port,
     compress: true,
     hot: true,
-    headers: {"Access-Control-Allow-Origin": "*"},
+    headers: { "Access-Control-Allow-Origin": "*" },
     static: {
       publicPath: "/",
     },
