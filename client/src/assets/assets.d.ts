@@ -1,7 +1,7 @@
 type Styles = Record<string, string>;
 
 declare module "*.svg" {
-  import {FC, SVGProps} from "react";
+  import { FC, SVGProps } from "react";
   export const ReactComponent: FC<SVGProps<SVGSVGElement>>;
 
   const content: string;
@@ -13,7 +13,7 @@ declare module "*.png" {
   export default content;
 }
 
-declare module '*.scss' {
+declare module "*.scss" {
   const content: Styles;
   export default content;
 }
