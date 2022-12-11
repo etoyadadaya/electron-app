@@ -74,6 +74,43 @@ p {
   gap: 10px;
 }
 
+.libraryWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.librarylinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 10px;
+  width: 100%;
+}
+
+.libraryMenuItem {
+  font-size: 16px;
+  font-weight: 300;
+  width: 100%;
+  margin-left: -5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.libraryMenuItemAdditional {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  width: 100%;
+}
+
+.librarySign {
+  font-size: 18px;
+}
+
 .settings {
   display: flex;
   gap: 5px;
