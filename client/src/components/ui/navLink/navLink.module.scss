@@ -1,12 +1,12 @@
 .link {
   align-items: center;
   background: transparent;
-  color: rgba(0, 0, 0, 1);
+  color: rgba(0, 0, 0, 0.5);
   border: none;
   font-size: 16px;
   text-decoration: none;
 
   &.active {
-    color: rgba(200, 0, 0, 1);
+    color: rgba(24, 102, 225, 1);
   }
 }

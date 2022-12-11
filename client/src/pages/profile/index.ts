@@ -1,5 +1,4 @@
-import { Achievements } from "./achievements/achievements";
-import { Attachments } from "./attachments/attachments";
+import { Vault } from "./vault/vault";
 import { Books } from "./books/books";
 import { Films } from "./films/films";
 import { Goals } from "./goals/goals";
@@ -9,11 +8,11 @@ import { Library } from "./library/library";
 import { Notes } from "./notes/notes";
 import { Profile } from "./profile/profile";
 import { Progress } from "./progress/progress";
-import { Solutions } from "./solutions/solutions";
+import { Music } from "./music/music";
+import { User } from "./user/user";
 
 export {
-  Achievements,
-  Attachments,
+  Vault,
   Books,
   Films,
   Goals,
@@ -23,5 +22,6 @@ export {
   Notes,
   Profile,
   Progress,
-  Solutions,
+  Music,
+  User
 };

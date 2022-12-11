@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styles from "./notes.module.scss";
 
 export const Notes = () => {

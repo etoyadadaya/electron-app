@@ -67,6 +67,7 @@ const createWindow = async () => {
     minWidth: 1024,
     height: 728,
     minHeight: 728,
+    titleBarStyle: "default",
     icon: getAssetPath("icon.png"),
     webPreferences: {
       webSecurity: false,

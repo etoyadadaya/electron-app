@@ -11,4 +11,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
+}
+
+.titlebar {
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
 }
