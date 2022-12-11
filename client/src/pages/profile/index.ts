@@ -23,5 +23,5 @@ export {
   Profile,
   Progress,
   Music,
-  User
+  User,
 };

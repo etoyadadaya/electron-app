@@ -13,7 +13,7 @@ import {
   Notes,
   Profile,
   Progress,
-  User
+  User,
 } from "../pages/profile";
 import { Settings } from "../pages/settings";
 
