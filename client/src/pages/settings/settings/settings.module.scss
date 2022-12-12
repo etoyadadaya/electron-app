@@ -1,9 +1,51 @@
+ul {
+  padding: 0;
+  margin: 0;
+}
+
 .container {
   display: flex;
+  align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.exit {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  text-decoration: none;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  font-size: 20px;
+}
+
+.window {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: #fffdfa;
+  overflow-y: initial !important;
+}
+
+.body {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .left {
@@ -11,11 +53,50 @@
   width: 240px;
   height: 100vh;
   position: relative;
-  background: pink;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.accountSettings {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.settingsTitle {
+  margin-left: 0;
+  color: rgba(55, 53, 47, 0.65);
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.settingsMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.settingsMenuItem {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 10px;
+  font-weight: 300;
+}
+
+.accountWorkspace {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-left: 20px;
 }
 
 .right {
   width: 100%;
   height: 100%;
-  background: #000;
+  background: rgb(247, 247, 245);
+  box-shadow: rgb(0 0 0 / 2%) -1px 0px;
 }

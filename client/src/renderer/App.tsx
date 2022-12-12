@@ -15,7 +15,18 @@ import {
   Progress,
   User,
 } from "../pages/profile";
-import { Settings } from "../pages/settings";
+import {
+  Account,
+  Billing,
+  Connections,
+  Earn,
+  Language,
+  Members,
+  Notification,
+  Security,
+  Settings,
+  Upgrade,
+} from "../pages/settings";
 
 export default function App() {
   return (
@@ -34,7 +45,18 @@ export default function App() {
           <Route path="notes" element={<Notes />} />
           <Route path="progress" element={<Progress />} />
           <Route path="music" element={<Music />} />
+        </Route>
+        <Route path="/modal" element={<Settings />}>
+          <Route path="account" element={<Account />} />
+          <Route path="billing" element={<Billing />} />
+          <Route path="connections" element={<Connections />} />
+          <Route path="earn" element={<Earn />} />
+          <Route path="language" element={<Language />} />
+          <Route path="members" element={<Members />} />
+          <Route path="notification" element={<Notification />} />
+          <Route path="security" element={<Security />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="upgrade" element={<Upgrade />} />
         </Route>
       </Routes>
     </Router>
