@@ -6,7 +6,7 @@ import { Graphs } from "./graphs/graphs";
 import { Ideas } from "./ideas/ideas";
 import { Library } from "./library/library";
 import { Notes } from "./notes/notes";
-import { Profile } from "./profile/profile";
+import { Profile } from "./profile";
 import { Progress } from "./progress/progress";
 import { Music } from "./music/music";
 import { User } from "./user/user";

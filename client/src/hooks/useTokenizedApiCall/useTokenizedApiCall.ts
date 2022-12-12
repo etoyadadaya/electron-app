@@ -32,7 +32,7 @@ export const useTokenizedApiCall = () => {
         return authHost
           .post<{ accessToken: string; refreshToken: string }>("/auth/refresh")
           .then((res) => {
-            if (res.status === 200) {
+            if (res.status === 201) {
               setAuth({
                 isAuth: false,
                 isLoading: true,

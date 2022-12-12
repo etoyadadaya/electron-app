@@ -27,8 +27,11 @@ import {
   Settings,
   Upgrade,
 } from "../pages/settings";
+import { useCheckAuth } from "../hooks/useCheckAuth/useCheckAuth";
 
 export default function App() {
+  useCheckAuth();
+
   return (
     <Router>
       <Routes>

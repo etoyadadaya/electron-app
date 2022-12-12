@@ -1,14 +1,17 @@
-import React, { FC, HTMLProps } from "react";
+import React, { FC } from "react";
 import styles from "./settings.module.scss";
 import { Outlet } from "react-router-dom";
-import { NavLink } from "../../../components/ui/navLink/navLink";
-import { Button } from "../../../components/ui/button/button";
+import { NavLink } from "../../components/ui/navLink/navLink";
+import { Button } from "../../components/ui/button/button";
+import { useRecoilValue } from "recoil";
+import { user } from "../../store";
 
 export const Settings: FC = () => {
+  const auth = useRecoilValue(user);
   return (
     <div className={styles.container}>
       <div className={styles.window}>
-        <NavLink to={"/profile"}>
+        <NavLink to="/profile">
           <Button variant="close">
             <svg
               width="20px"
@@ -23,7 +26,7 @@ export const Settings: FC = () => {
         <div className={styles.body}>
           <div className={styles.left}>
             <div className={styles.accountSettings}>
-              <p className={styles.settingsTitle}>Email@gmail.com</p>
+              <p className={styles.settingsTitle}>{auth.email}</p>
               <ul className={styles.settingsMenu}>
                 <NavLink
                   to="/modal/account"
@@ -66,7 +69,10 @@ export const Settings: FC = () => {
                   </svg>
                   <p>Language & region</p>
                 </NavLink>
-                <NavLink to="/modal/earn" className={styles.settingsMenuItem}>
+                <NavLink
+                  to="/modal/earn"
+                  className={styles.settingsMenuItem}
+                >
                   <svg width="20px" height="20px" viewBox="0 0 20 20">
                     <path d="M5.89062 18.1094H14.1016C15.5703 18.1094 16.3828 17.3359 16.3828 15.8594V11.0625H16.4375C17.125 10.9141 17.5078 10.3594 17.5078 9.5625V7.50781C17.5078 6.55469 16.9766 5.95312 16.0234 5.95312H14.4453C14.8594 5.53906 15.1016 4.97656 15.1016 4.32812C15.1016 2.8125 13.9062 1.73438 12.3906 1.73438C11.2969 1.73438 10.3906 2.33594 9.99219 3.38281C9.59375 2.33594 8.69531 1.73438 7.59375 1.73438C6.08594 1.73438 4.88281 2.8125 4.88281 4.32812C4.88281 4.97656 5.125 5.53906 5.54688 5.95312H3.96875C3.05469 5.95312 2.48438 6.55469 2.48438 7.50781V9.5625C2.48438 10.3594 2.85938 10.9141 3.54688 11.0625H3.60156V15.8594C3.60156 17.3359 4.41406 18.1094 5.89062 18.1094ZM9.35156 5.95312H8.13281C6.90625 5.95312 6.1875 5.25781 6.1875 4.39844C6.1875 3.53906 6.8125 3.03906 7.67188 3.03906C8.60156 3.03906 9.35156 3.74219 9.35156 4.89844V5.95312ZM10.6328 5.95312V4.89844C10.6328 3.74219 11.3828 3.03906 12.3125 3.03906C13.1719 3.03906 13.7969 3.53906 13.7969 4.39844C13.7969 5.25781 13.0859 5.95312 11.8516 5.95312H10.6328ZM9.29688 9.9375H4.28906C3.89844 9.9375 3.74219 9.77344 3.74219 9.38281V7.67969C3.74219 7.28906 3.89844 7.13281 4.28906 7.13281H9.29688V9.9375ZM10.6875 9.9375V7.13281H15.7109C16.1016 7.13281 16.25 7.28906 16.25 7.67969V9.38281C16.25 9.77344 16.1016 9.9375 15.7109 9.9375H10.6875ZM9.29688 16.9375H5.875C5.22656 16.9375 4.85938 16.5703 4.85938 15.9219V11.1172H9.29688V16.9375ZM10.6875 16.9375V11.1172H15.125V15.9219C15.125 16.5703 14.7578 16.9375 14.1094 16.9375H10.6875Z"></path>
                   </svg>

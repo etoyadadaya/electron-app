@@ -1,4 +1,4 @@
-import { Settings } from "./settings/settings";
+import { Settings } from "./settings";
 import { Account } from "./account/account";
 import { Billing } from "./billing/billing";
 import { Connections } from "./connections/connections";

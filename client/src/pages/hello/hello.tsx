@@ -1,35 +1,65 @@
 import React, { useState } from "react";
 import styles from "./hello.module.scss";
-import { Input } from "../../../components/ui/input/input";
-import { Button } from "../../../components/ui/button/button";
-import { useNavigate } from "react-router-dom";
+import { Input } from "../../components/ui/input/input";
+import { Button } from "../../components/ui/button/button";
 import { useSetRecoilState } from "recoil";
-import { auth } from "../../../store";
-import { useApiCall } from "../../../hooks/useApiCall/useApiCall";
+import { auth, user } from "../../store";
+import { useApiCall } from "../../hooks/useApiCall/useApiCall";
 import { useForm } from "react-hook-form";
+import { useTokenizedApiCall } from "../../hooks/useTokenizedApiCall/useTokenizedApiCall";
+import { User } from "../../types";
+import { UserCache } from "../../services";
+import useRequireNotAuth from "../../hooks/useRequireNotAuth/useRequireNotAuth";
 
 export const Hello = () => {
+  useRequireNotAuth("/profile");
+  const authHost = useTokenizedApiCall();
   const apiCall = useApiCall();
-  const navigate = useNavigate();
   const setAuth = useSetRecoilState(auth);
+  const setUser = useSetRecoilState(user);
   const [signIn, setSignIn] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: "onBlur" });
+
   const submit = handleSubmit((data) => {
     apiCall
       .post(signIn ? "/auth/registration" : "auth/login", data)
       .then((res) => {
+        getUser(res.data.access_token);
+      });
+  });
+
+  const getUser = (token: string) => {
+    setAuth({
+      isAuth: true,
+      isLoading: true,
+      // @ts-ignore
+      token: token,
+    });
+    setTimeout(() => {
+      authHost.get<User>("/users").then((res) => {
+        UserCache.setStore({
+          id: res.data.id,
+          email: res.data.email,
+        });
+        setUser({
+          // @ts-ignore
+          id: res.data.id,
+          // @ts-ignore
+          email: res.data.email,
+        });
         setAuth({
           isAuth: true,
           isLoading: false,
-          token: res.data.access_token,
+          // @ts-ignore
+          token: token,
         });
-        navigate("/profile");
       });
-  });
+    }, 0);
+  };
 
   return (
     <div className={styles.container}>

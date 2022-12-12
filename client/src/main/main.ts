@@ -77,6 +77,8 @@ const createWindow = async () => {
     },
   });
 
+  app.commandLine.appendSwitch("--disable-features=SameSiteByDefaultCookies");
+
   mainWindow.loadURL(resolveHtmlPath("index.html"));
 
   mainWindow.on("ready-to-show", () => {
