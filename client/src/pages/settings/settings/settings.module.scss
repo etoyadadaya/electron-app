@@ -5,3 +5,17 @@
   height: 100%;
   z-index: 1;
 }
+
+.left {
+  user-select: none;
+  width: 240px;
+  height: 100vh;
+  position: relative;
+  background: pink;
+}
+
+.right {
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
